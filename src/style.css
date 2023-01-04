@@ -1,0 +1,14 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+#app {
+  max-width: 1024px;
+  margin: 0 auto;
+  text-align: center;
+  height: 100%;
+}
+a {
+  color: #646cffaa;
+}
+

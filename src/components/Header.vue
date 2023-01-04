@@ -1,0 +1,87 @@
+<template>
+  <header>
+    <van-icon v-if="back"
+              name="arrow-left"
+              size="30"
+              @click="goBack()" />
+    <van-icon v-else
+              name="ellipsis"
+              size="30" @click="show = true" />
+    <h3 class="title">{{ title }}</h3>
+    <div class="user">
+      <van-button round
+                  type="success"
+                  color="linear-gradient(to right, #ff6034, #ee0a24)"
+                  to="login" v-if="!isLogin">登录</van-button>
+      <div v-else>
+        <span @click="goUser()">{{ userInfo.nickname }}</span>
+      </div>
+      
+    </div>
+  </header>
+</template>
+<script>
+import { onMounted, reactive, ref, toRefs } from 'vue'
+import { useRouter } from 'vue-router'
+
+export default {
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    back: {
+      type: Boolean,
+      default: false
+    }
+  },
+  setup() {
+    const router = useRouter();
+    const data = reactive({
+        isLogin: false,
+        userInfo: {}
+    })
+    onMounted(async () => {
+      const token = JSON.parse(localStorage.getItem('token'));
+      if (token) {
+        data.isLogin = true;
+        data.userInfo = token.profile;
+      }
+    })
+
+    const goBack = () => {
+      router.go(-1);
+    }
+
+    const goUser = () => {
+      router.push('/user')
+    }
+
+    return {
+      goBack,
+      goUser,
+      ...toRefs(data)
+    }
+  },
+}
+</script>
+<style lang="less" scoped>
+header {
+  height: 60px;
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 0 10px;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  .title {
+    font-size: 20px;
+  }
+  .van-button {
+    padding: 0 15px;
+  }
+}
+</style>
