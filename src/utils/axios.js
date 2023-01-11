@@ -8,6 +8,10 @@ axios.defaults.baseURL = 'http://172.22.4.24:3000'
 axios.interceptors.request.use((config) => {
     config.headers['Content-Type'] = 'application/json'
     store.state.isLoading = true
+    if (config.otherBaseUrl) {
+        config.baseURL = 'https://api.iwyu.com/API/weibo/'
+    }
+    console.log(config);
     return config
 });
 

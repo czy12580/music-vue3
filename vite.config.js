@@ -7,7 +7,13 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     host: '0.0.0.0',
-    open: false
+    open: false,
+    proxy: {
+      'api/': {
+        target: "https://api.iwyu.com/API/weibo/",
+        changeOrigin: true
+      }
+    }
   },
   resolve: {
     //统一设置文件路径@

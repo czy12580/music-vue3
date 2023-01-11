@@ -11,6 +11,10 @@ export function post(url, params) {
     return axios.post(url, params)
 }
 
+export function getOther(url) {
+    return axios.get(url, {otherBaseUrl: true})
+}
+
 
 //歌单接口
 /* 参数

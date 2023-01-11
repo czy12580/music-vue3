@@ -153,7 +153,7 @@ export default {
   }
   .card {
     position: absolute;
-    top: 300px;
+    bottom: -60px;
     left: 50%;
     width: 360px;
     height: 120px;
@@ -161,6 +161,8 @@ export default {
     border-radius: 10px;
     box-shadow: 0 3px 3px #ccc;
     margin-left: -180px;
+    box-sizing: border-box;
+    padding-top: 13px;
     h4 {
       margin: 5px 0;
     }
