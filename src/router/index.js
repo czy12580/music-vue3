@@ -25,12 +25,22 @@ const router = createRouter({
         {
             path: '/singer/:id',
             name: 'singer',
-            component: () => import('@/views/web/SingerDetail.vue')
+            component: () => import('@/views/web/singer/SingerDetail.vue')
+        },
+        {
+            path: '/playlist/:id',
+            name: 'playlist',
+            component: () => import('@/views/web/playlist/PlayList.vue')
+        },
+        {
+            path: '/playlist/detail',
+            name: 'playlistDetail',
+            component: () => import('@/views/web/playlist/Detail.vue')
         },
         {
             path: '/singer/category',
             name: 'singerCategory',
-            component: () => import('@/views/web/SingerCategory.vue')
+            component: () => import('@/views/web/singer/SingerCategory.vue')
         }
     ]
 })

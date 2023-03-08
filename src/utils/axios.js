@@ -11,7 +11,6 @@ axios.interceptors.request.use((config) => {
     if (config.otherBaseUrl) {
         config.baseURL = 'https://api.iwyu.com/API/weibo/'
     }
-    console.log(config);
     return config
 });
 

@@ -1,6 +1,6 @@
 <template>
-  <Loading v-if="isShow"></Loading>
-  <div v-else>
+ 
+  <div>
     <Header :title="artistInfo.name"
             :back="true"></Header>
     <div class="singer-detail">
@@ -109,8 +109,7 @@ export default {
       albumList: [],
       mvList: [],
       isActive: false,
-      objects: {},
-      isShow: false
+      objects: {}
     })
     onMounted(async () => {
       data.id = route.params.id
@@ -123,9 +122,6 @@ export default {
       data.hotSongs = songs.hotSongs
       data.albumList = album.hotAlbums
       data.mvList = mv.mvs
-    })
-    data.isShow = computed(() => {
-      return store.state.isLoading
     })
     const openSheet = (obj) => {
       data.objects = obj;
@@ -222,6 +218,7 @@ export default {
         margin: 20px 0;
         img {
           width: 150px;
+          height: 100px;
         }
         .desc {
           color: #ccc;

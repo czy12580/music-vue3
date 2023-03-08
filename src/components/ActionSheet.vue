@@ -48,7 +48,8 @@ export default {
 
         return {
             ...toRefs(data),
-            playSong
+            playSong,
+            close
         }
     }
 }

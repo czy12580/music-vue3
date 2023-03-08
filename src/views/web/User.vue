@@ -7,23 +7,27 @@
         <img :src="userInfo.avatarUrl"
              alt="">
         <div class="text">
-            <span>用户名： {{ userInfo.nickname }}</span>
+          <span>用户名： {{ userInfo.nickname }}</span>
         </div>
       </div>
-        <van-button round
-                    block
-                    type="warning"
-                    @click="userLogout">
-          退出登录
-        </van-button>
-
+      <van-button round
+                  block
+                  type="warning"
+                  @click="userLogout">
+        退出登录
+      </van-button>
+      <!-- <div @mousemove="move"
+           :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }"
+           class="movearea">
+        x: {{ x }}
+      </div> -->
     </div>
 
   </div>
 </template>
 <script>
-import Header from '../../components/Header.vue'
-import { onMounted, reactive, toRefs } from 'vue'
+import Header from '@/components/Header.vue'
+import { onMounted, reactive, ref, toRefs, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { logout, getUserInfo } from '../../service/index'
 
@@ -35,8 +39,10 @@ export default {
     const router = useRouter()
     const data = reactive({
       title: '个人中心',
-      userInfo: {}
+      userInfo: {},
+      x: ''
     })
+
 
     onMounted(async () => {
       const token = JSON.parse(localStorage.getItem('token'));
@@ -49,9 +55,14 @@ export default {
       router.push('/')
     }
 
+    const move = (e) => {
+      data.x = e.clientX
+    }
+
     return {
       ...toRefs(data),
-      userLogout
+      userLogout,
+      move
     }
   },
 }
@@ -80,8 +91,16 @@ export default {
       border-radius: 50%;
     }
     .text {
-        padding: 0 10px;
+      padding: 0 10px;
     }
+  }
+  .movearea {
+    transition: 0.3s background-color ease;
+    height: 120px;
+    border-radius: 10px;
+    margin: 10px 10px 50px 10px;
+    padding: 0 20px;
+    color: #fff;
   }
 }
 </style>

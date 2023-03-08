@@ -8,18 +8,23 @@
     <div class="playlist">
       <div class="item"
            v-for="item in hotPlayList"
-           :key="item.id">
+           :key="item.id"
+           @click="getDetail(item.id, 'playlist')">
         <img v-lazy="item.coverImgUrl">
         <h4>{{ item.name }}</h4>
       </div>
     </div>
+    <van-button plain
+                round
+                type="success"
+                to="/playlist/detail">查看更多 >></van-button>
 
     <h3 class="title">热门歌手</h3>
     <div class="artistlist">
       <div class="item"
            v-for="item in artistsList"
            :key="item.id"
-           @click="getDetail(item.id)">
+           @click="getDetail(item.id, 'singer')">
         <img v-lazy="item.picUrl">
         <h4>{{ item.name }}</h4>
       </div>
@@ -79,8 +84,8 @@ export default {
       return store.state.isLoading
     })
 
-    const getDetail = (id) => {
-      router.push({ path: `/singer/${id}` })
+    const getDetail = (id, resource) => {
+      router.push({ path: `/${resource}/${id}` })
     }
 
     const initList = async () => {

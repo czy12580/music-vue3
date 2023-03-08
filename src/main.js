@@ -4,7 +4,7 @@ import App from './App.vue'
 import router from './router/index.js'
 import store from './store'
 import VueAudio from 'vue-audio-better'
-import { Swipe, SwipeItem, Icon, Button, Form, Field, CellGroup, Toast, Lazyload, Loading, Overlay, Tab, Tabs, ActionSheet, DropdownMenu, DropdownItem, Search, Dialog } from 'vant';
+import { Swipe, SwipeItem, Icon, Button, Form, Field, CellGroup, Toast, Lazyload, Loading, Overlay, Tab, Tabs, ActionSheet, DropdownMenu, DropdownItem, Search, Dialog, Tag, Pagination } from 'vant';
 import 'vant/lib/index.css'; // 全局引入样式
 
 const app = createApp(App)
@@ -30,6 +30,8 @@ app.use(Swipe)
     .use(Search)
     .use(VueAudio)
     .use(Dialog)
+    .use(Tag)
+    .use(Pagination)
 
 app.use(Lazyload, {
     lazyComponent: true,

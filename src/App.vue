@@ -22,7 +22,6 @@ export default {
     })
 
     data.currentUrl = computed(() => {
-      console.log(store.state.songUrl);
       return store.state.songUrl
     })
 
