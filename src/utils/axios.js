@@ -16,6 +16,7 @@ axios.interceptors.request.use((config) => {
 
 axios.interceptors.response.use((res) => {
     const code = res.status;
+    store.state.isLoading = false
     if (typeof res.data !== 'object') {
         Toast.fail('服务端异常！')
         return Promise.reject(res)
@@ -29,7 +30,6 @@ axios.interceptors.response.use((res) => {
         }
     }
     if (code == 200 && res.data) {
-        store.state.isLoading = false
         if (res.data.code != 200) {
             Toast.fail(res.data.message);
         }

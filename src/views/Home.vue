@@ -96,6 +96,7 @@ export default {
       data.mvList = mv.data
     }
 
+
     return {
       ...toRefs(data),
       getDetail,
