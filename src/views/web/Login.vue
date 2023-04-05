@@ -58,7 +58,8 @@
                        :rules="[{ required: true, message: '请输入手机号' }]">
               <template #button>
                 <van-button size="small"
-                            type="primary" @click="sendCaptcha()">发送验证码</van-button>
+                            type="primary"
+                            @click="sendCaptcha()">发送验证码</van-button>
               </template>
             </van-field>
             <van-field v-model="registerData.password"
@@ -90,12 +91,17 @@
         <a href="javascript:void(0)"
            @click="toggle('login')">已有账号</a>
       </div>
-      <van-button color="#7232dd"
-                  plain
-                  to="home">返回首页</van-button>
+      <div class="btn-group">
+        <van-button color="#7232dd"
+                    plain
+                    to="home">返回首页</van-button>
+        <van-button color="#7232dd"
+                    plain
+                    to="rqlogin">二维码登录</van-button>
+      </div>
+
     </div>
   </div>
-
 </template>
 <script>
 import Header from '../../components/Header.vue'
@@ -147,7 +153,7 @@ export default {
 
     const sendCaptcha = async () => {
       if (data.registerData.phone) {
-        await captcha({phone : data.registerData.phone})
+        await captcha({ phone: data.registerData.phone })
         if (res.code === 200) {
           Toast.success('发送成功，请注意查收！')
         }
@@ -192,6 +198,12 @@ body {
   }
   .login-box {
     margin: 20px auto;
+    max-width: 414px;
+  }
+  .btn-group {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
     max-width: 414px;
   }
 }

@@ -46,7 +46,7 @@ export default {
 
     onMounted(async () => {
       const token = JSON.parse(localStorage.getItem('token'));
-      data.userInfo = token.profile
+      data.userInfo = token.data.profile
     })
 
     const userLogout = async () => {

@@ -6,18 +6,24 @@
               @click="goBack()" />
     <van-icon v-else
               name="ellipsis"
-              size="30" @click="show = true" />
+              size="30"
+              @click="show = true" />
     <h3 class="title">{{ title }}</h3>
     <div class="user">
       <van-button round
                   type="success"
                   color="linear-gradient(to right, #ff6034, #ee0a24)"
-                  to="login" v-if="!isLogin">登录</van-button>
+                  to="login"
+                  v-if="!isLogin">登录</van-button>
       <div v-else>
         <span @click="goUser()">{{ userInfo.nickname }}</span>
       </div>
-      
+
     </div>
+
+    <van-popup :show="show"
+               position="left" closeable @click-close-icon="close()"
+               :style="{ width: '50%', height: '100%' }" />
   </header>
 </template>
 <script>
@@ -38,14 +44,15 @@ export default {
   setup() {
     const router = useRouter();
     const data = reactive({
-        isLogin: false,
-        userInfo: {}
+      isLogin: false,
+      userInfo: {},
+      show: false
     })
     onMounted(async () => {
       const token = JSON.parse(localStorage.getItem('token'));
       if (token) {
         data.isLogin = true;
-        data.userInfo = token.profile;
+        data.userInfo = token.data.profile;
       }
     })
 
@@ -57,9 +64,12 @@ export default {
       router.push('/user')
     }
 
+    const close = () => data.show = false
+
     return {
       goBack,
       goUser,
+      close,
       ...toRefs(data)
     }
   },
