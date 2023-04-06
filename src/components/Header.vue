@@ -23,7 +23,13 @@
 
     <van-popup :show="show"
                position="left" closeable @click-close-icon="close()"
-               :style="{ width: '50%', height: '100%' }" />
+               :style="{ width: '50%', height: '100%' }">
+      <div class="side-bar">
+          <van-button color="#000">单色按钮</van-button>
+          <van-button color="#000">单色按钮</van-button>
+          <van-button color="#000">单色按钮</van-button>
+      </div>
+    </van-popup>
   </header>
 </template>
 <script>
