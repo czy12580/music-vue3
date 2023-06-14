@@ -16,18 +16,12 @@
                   @click="userLogout">
         退出登录
       </van-button>
-      <!-- <div @mousemove="move"
-           :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }"
-           class="movearea">
-        x: {{ x }}
-      </div> -->
     </div>
-
   </div>
 </template>
 <script>
 import Header from '@/components/Header.vue'
-import { onMounted, reactive, ref, toRefs, watch } from 'vue'
+import { onMounted, reactive, ref, toRefs} from 'vue'
 import { useRouter } from 'vue-router'
 import { logout, getUserInfo } from '../../service/index'
 
@@ -55,14 +49,11 @@ export default {
       router.push('/')
     }
 
-    const move = (e) => {
-      data.x = e.clientX
-    }
+
 
     return {
       ...toRefs(data),
-      userLogout,
-      move
+      userLogout
     }
   },
 }
@@ -92,6 +83,7 @@ export default {
     }
     .text {
       padding: 0 10px;
+      font-size: 18px;
     }
   }
   .movearea {

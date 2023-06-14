@@ -139,10 +139,10 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   .item {
-    width: 150px;
+    width: 8rem;
     margin: 10px;
     display: flex;
-    padding: 10px;
+    padding: 0.5rem;
     align-items: center;
     border-radius: 8px;
     box-shadow: 0 8px 12px #ebedf0;

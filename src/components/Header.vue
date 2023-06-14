@@ -25,9 +25,9 @@
                position="left" closeable @click-close-icon="close()"
                :style="{ width: '50%', height: '100%' }">
       <div class="side-bar">
-          <van-button color="#000">单色按钮</van-button>
-          <van-button color="#000">单色按钮</van-button>
-          <van-button color="#000">单色按钮</van-button>
+          <van-button color="#000" to="/playlist/detail">歌单</van-button>
+          <van-button color="#000" to="/singer/category">歌手</van-button>
+          <van-button color="#000" to="">MV</van-button>
       </div>
     </van-popup>
   </header>
@@ -93,11 +93,20 @@ header {
   position: sticky;
   top: 0;
   z-index: 99999;
+  font-size: 18px;
   .title {
     font-size: 20px;
   }
   .van-button {
     padding: 0 15px;
+  }
+  .side-bar {
+    padding: 37px 20px;
+    display: flex;
+    flex-direction: column;
+    .van-button {
+      margin-bottom: 10px;
+    }
   }
 }
 </style>

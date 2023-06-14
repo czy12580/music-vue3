@@ -46,6 +46,11 @@ const router = createRouter({
             path: '/singer/category',
             name: 'singerCategory',
             component: () => import('@/views/web/singer/SingerCategory.vue')
+        },
+        {
+            path: '/test',
+            name: 'test',
+            component: () => import('@/views/web/Test.vue')
         }
     ]
 })

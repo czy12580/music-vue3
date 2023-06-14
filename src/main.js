@@ -6,6 +6,8 @@ import store from './store'
 import VueAudio from 'vue-audio-better'
 import { Swipe, SwipeItem, Icon, Button, Form, Field, CellGroup, Toast, Lazyload, Loading, Overlay, Tab, Tabs, ActionSheet, DropdownMenu, DropdownItem, Search, Dialog, Tag, Pagination, Popup } from 'vant';
 import 'vant/lib/index.css'; // 全局引入样式
+import 'amfe-flexible'
+// import './utils/rem'
 
 const app = createApp(App)
 
