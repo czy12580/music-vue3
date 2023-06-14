@@ -148,6 +148,7 @@ export default {
     width: 100%;
   }
   .card {
+    font-size: 16px;
     position: absolute;
     bottom: -60px;
     left: 50%;
@@ -171,6 +172,7 @@ export default {
 }
 .tab-content {
   margin-top: 100px;
+  font-size: 16px;
   .tab-item {
     padding: 10px 30px;
     p {

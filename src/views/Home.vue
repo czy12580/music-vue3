@@ -139,10 +139,10 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   .item {
-    width: 8rem;
+    width: 130px;
     margin: 10px;
     display: flex;
-    padding: 0.5rem;
+    padding: 5px;
     align-items: center;
     border-radius: 8px;
     box-shadow: 0 8px 12px #ebedf0;
@@ -181,6 +181,7 @@ export default {
   }
 }
 .title {
+  font-size: 28px;
   margin-bottom: 0;
   padding-bottom: 10px;
   border-bottom: 1px solid #000;
