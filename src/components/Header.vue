@@ -28,6 +28,7 @@
           <van-button color="#000" to="/playlist/detail">歌单</van-button>
           <van-button color="#000" to="/singer/category">歌手</van-button>
           <van-button color="#000" to="">MV</van-button>
+          <van-button color="#000" to="/search">搜索</van-button>
       </div>
     </van-popup>
   </header>

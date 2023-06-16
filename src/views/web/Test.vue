@@ -27,7 +27,6 @@ onMounted(async () => {});
 <style lang="less" scoped>
 @media all and (max-width: 900px) {
   .box {
-    font-size: 37.5px;
     background: skyblue;
     width: 200px;
     height: 200px;

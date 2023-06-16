@@ -110,17 +110,17 @@ export default {
   width: 100%;
 }
 .playlist {
-  padding: 10px;
+  padding: 10px 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   .item {
-    width: 100px;
-    margin: 10px;
+    width: 30%;
     box-shadow: 0 2px 3px #ccc;
+    padding: 0 5px;
+    margin-bottom: 10px;
     img {
-      height: 100px;
-      width: 100px;
+      width: 100%;
       border-radius: 5px;
     }
     h4 {
