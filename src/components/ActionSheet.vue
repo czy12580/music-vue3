@@ -6,11 +6,11 @@
                     :closeable="false"
                     >
     <div class="content">
-        <span>{{ obj.alia[0] }}</span>
+        <span v-if="obj.alia">{{ obj.alia[0] }}</span>
         <div class="action">
-            <van-icon size="2rem" name="play-circle-o" @click="playSong(obj.id)" />
-            <van-icon size="2rem" name="like-o" />
-            <van-icon size="2rem" name="add-o" />
+            <van-icon size="1rem" name="play-circle-o" @click="playSong(obj.id)" />
+            <van-icon size="1rem" name="like-o" />
+            <van-icon size="1rem" name="add-o" />
         </div>
     </div>
   </van-action-sheet>
@@ -57,7 +57,7 @@ export default {
 
 <style lang="less" scoped>
 .content {
-    padding: 10px 30px 100px;
+    padding: 10px 30px 50px;
     .action {
         display: flex;
         justify-content: space-between;

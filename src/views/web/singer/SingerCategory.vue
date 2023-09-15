@@ -39,6 +39,7 @@
 <script>
 import Header from '@/components/Header.vue'
 import { reactive, toRefs, onMounted } from 'vue'
+import axios from '@/utils/axios'
 import { getArtistCategory, search } from '@/service/data'
 import { useRouter } from 'vue-router'
 export default {
@@ -83,7 +84,8 @@ export default {
     }
 
     const onSearch = async() => {
-        const res = await search({keywords: data.keywords, type: 100})
+        // const res = await search({keywords: data.keywords, type: 100})
+        const res = await axios.post('https://autumnfish.cn/search', {keywords: data.keywords, type: 100})
         data.obj = res.result;
     }
 
