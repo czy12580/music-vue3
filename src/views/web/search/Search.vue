@@ -6,6 +6,7 @@
       shape="round"
       background="#000"
       @search="onSearch"
+      @blur="onSearch"
       placeholder="请输入歌名、歌手、专辑..."
     >
     </van-search>

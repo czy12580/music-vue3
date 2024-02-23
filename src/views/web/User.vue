@@ -33,8 +33,7 @@ export default {
     const router = useRouter()
     const data = reactive({
       title: '个人中心',
-      userInfo: {},
-      x: ''
+      userInfo: {}
     })
 
 
