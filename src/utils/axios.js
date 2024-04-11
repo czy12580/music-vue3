@@ -3,8 +3,8 @@ import { Toast } from 'vant'
 import store from '../store'
 import router from '../router'
 
-// axios.defaults.baseURL = 'https://musci-api-six.vercel.app/'
-axios.defaults.baseURL = 'http://172.22.4.79:3000/'
+axios.defaults.baseURL = 'https://musci-api-six.vercel.app/'
+// axios.defaults.baseURL = 'http://172.22.4.79:3000/'
 
 axios.interceptors.request.use((config) => {
     config.headers['Content-Type'] = 'application/json'
