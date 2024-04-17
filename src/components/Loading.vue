@@ -23,8 +23,8 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #565656;
-  opacity: 0.6;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
 .block {

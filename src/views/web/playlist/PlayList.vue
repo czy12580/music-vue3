@@ -1,4 +1,5 @@
 <template>
+  <Loading v-if="isLoading"></Loading>
   <div>
     <Header :title="'歌单'"
             :back="true"></Header>
@@ -52,9 +53,10 @@ import ActionSheet from '@/components/ActionSheet.vue'
 import { onMounted, reactive, ref, toRefs } from 'vue'
 import { useRoute } from 'vue-router'
 import { post } from '@/service/data'
+import Loading from '@/components/Loading.vue'
 export default {
   components: {
-    Header, ActionSheet
+    Header, ActionSheet, Loading
   },
   setup() {
     const route = useRoute()
@@ -69,7 +71,8 @@ export default {
         offset: 0
       },
       objects: {},
-      isActive: false
+      isActive: false,
+      isLoading: false
     })
 
     const initList = async () => {
@@ -79,9 +82,11 @@ export default {
 
 
     onMounted(async () => {
+      obj.isLoading = true;
       let res = await post('/playlist/detail', { id: obj.params.id })
       obj.playlist = res.playlist
       initList()
+      obj.isLoading = false;
     })
 
     const changePage = () => {

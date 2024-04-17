@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Loading v-if="isLoading"></Loading>
     <Header :title="title" :back="true"></Header>
     <van-search
       v-model="keywords"
@@ -70,12 +71,13 @@
 <script setup>
 import Header from "@/components/Header.vue";
 import ActionSheet from "@/components/ActionSheet.vue"
+import Loading from '@/components/Loading.vue'
 import axios from '@/utils/axios'
 import { reactive, ref, onMounted } from "vue";
 import { search } from "@/service/data.js"
 import { useRouter } from "vue-router";
 components: {
-  Header, ActionSheet
+  Header, ActionSheet, Loading
 }
 const router = useRouter();
 const title = ref("搜索");
@@ -83,13 +85,15 @@ const keywords = ref(null);
 const albumsList = ref([])
 const artistsList = ref([])
 const songsList = ref([])
+const isLoading = ref(false);
 
 const onSearch = async () => {
-  const res = await axios.get('https://autumnfish.cn/search/suggest?keywords=' + keywords.value)
+  isLoading.value = true;
+  const res = await axios.get('/search/suggest?keywords=' + keywords.value)
   albumsList.value = res.result.albums
   artistsList.value = res.result.artists
   songsList.value = res.result.songs
-  console.log(res);
+  isLoading.value = false;
 };
 
 const isActive = ref(false);

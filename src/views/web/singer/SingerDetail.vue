@@ -1,5 +1,5 @@
 <template>
- 
+  <Loading v-if="isLoading"></Loading>
   <div>
     <Header :title="artistInfo.name"
             :back="true"></Header>
@@ -109,9 +109,11 @@ export default {
       albumList: [],
       mvList: [],
       isActive: false,
+      isLoading: false,
       objects: {}
     })
     onMounted(async () => {
+      data.isLoading = true
       data.id = route.params.id
       let params = { id: route.params.id }
       const [res, fanCount, des, songs, album, mv] = await Promise.all([artistsDetail(params), fan(params), artistDesc(params),
@@ -122,6 +124,7 @@ export default {
       data.hotSongs = songs.hotSongs
       data.albumList = album.hotAlbums
       data.mvList = mv.mvs
+      data.isLoading = false
     })
     const openSheet = (obj) => {
       data.objects = obj;

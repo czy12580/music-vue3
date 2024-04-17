@@ -51,10 +51,7 @@ const getCategory = async () => {
 }
 
 const initList = async (params) => {
-    if (typeof params !== 'undefined') {
-      
-    }
-    axios.post('/top/playlist', state.params)
+    await axios.post('/top/playlist', state.params)
     .then(res => {
         state.playlist = res.playlists
     })

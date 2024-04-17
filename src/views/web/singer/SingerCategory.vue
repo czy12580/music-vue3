@@ -1,4 +1,5 @@
 <template>
+  <Loading v-if="isLoading"></Loading>
   <div>
     <Header :title="title"
             :back="true"></Header>
@@ -38,13 +39,14 @@
 
 <script>
 import Header from '@/components/Header.vue'
+import Loading from '@/components/Loading.vue'
 import { reactive, toRefs, onMounted } from 'vue'
 import axios from '@/utils/axios'
 import { getArtistCategory, search } from '@/service/data'
 import { useRouter } from 'vue-router'
 export default {
   components: {
-    Header
+    Header, Loading
   },
   setup() {
     const router = useRouter()
@@ -67,7 +69,8 @@ export default {
       option3: [],
       params: { type: -1, area: -1, initial: '-1' },
       obj: {},
-      keywords: ''
+      keywords: '',
+      isLoading: false
     })
 
     onMounted(async () => {
@@ -85,7 +88,7 @@ export default {
 
     const onSearch = async() => {
         // const res = await search({keywords: data.keywords, type: 100})
-        const res = await axios.post('https://autumnfish.cn/search', {keywords: data.keywords, type: 100})
+        const res = await axios.post('/search', {keywords: data.keywords, type: 100})
         data.obj = res.result;
     }
 
@@ -95,8 +98,10 @@ export default {
 
     // 初始化歌手列表
     const initList = async (params) => {
+      data.isLoading = true
       const res = await getArtistCategory(params)
       data.obj = res;
+      data.isLoading = false
     }
 
     return {

@@ -1,7 +1,6 @@
 <template>
-  <Loading v-if="isShow"></Loading>
-  <div class="conatainer"
-       v-else>
+  <Loading v-if="isLoading"></Loading>
+  <div class="conatainer">
     <Header :title="title"></Header>
     <swiper :object="bannerList"></swiper>
     <h3 class="title">热门歌单</h3>
@@ -71,6 +70,7 @@ export default {
     const data = reactive({
       title: '网易云',
       isShow: false,
+      isLoading: false,
       bannerList: [],
       hotPlayList: [],
       artistsList: [],
@@ -89,11 +89,13 @@ export default {
     }
 
     const initList = async () => {
+      data.isLoading = true;
       const [res, play_list, singer, mv] = await Promise.all([getBanner(), playlist({ limit: 12 }), artists(), topmv()])
       data.bannerList = res.banners
       data.hotPlayList = play_list.playlists
       data.artistsList = singer.artists
       data.mvList = mv.data
+      data.isLoading = false;
     }
 
 
